@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "title": "E-commerce платформа",
+    "description": "Современный интернет-магазин с корзиной и оплатой",
+    "image": "/img/gde_3d_hall.jpg",
+    "type": "development",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "detailedDescription": "Разработал полноценную e-commerce платформу с нуля. Проект включал в себя создание адаптивного интерфейса, интеграцию платежных систем, админ-панель для управления товарами и заказами.\n\nОсобое внимание уделил производительности и безопасности. Внедрил JWT аутентификацию, защиту от CSRF атак, оптимизировал загрузку изображений и реализовал кэширование на уровне API.\n\nВ результате клиент получил современный, быстрый и надежный интернет-магазин, который выдерживает высокие нагрузки и удобен как для покупателей, так и для администраторов.",
+    "gallery": [
+      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
+      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
+      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
+      {"type": "video", "src": "https://vkvideo.ru/video_ext.php?oid=-198955776&id=456239394&hash=b1cf74e99c3e5095&hd=4"}
+    ],
+    "link": "https://example.com/ecommerce"
+  },
+  {
+    "id": 2,
+    "title": "Мобильное приложение фитнес",
+    "description": "Приложение для отслеживания тренировок и питания",
+    "image": "/project2.jpg",
+    "type": "design",
+    "tags": ["UI/UX", "Mobile", "Figma"],
+    "detailedDescription": "Разработал дизайн-концепцию мобильного приложения для фитнес-трекинга. Провел исследование целевой аудитории, создал user flow и прототипы.\n\nИнтерфейс получился интуитивно понятным и мотивирующим. Использовал современные тренды в мобильном дизайне: неоморфизм, плавные анимации, удобную навигацию одним пальцем.\n\nПосле запуска дизайна конверсия в премиум-подписку выросла на 40%, а среднее время использования приложения увеличилось в 2 раза.",
+    "gallery": [
+      {"type": "image", "src": "/project2.jpg"},
+      {"type": "image", "src": "/project2_detail1.jpg"},
+      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+    ],
+    "link": "https://example.com/fitness-app"
+  },
+  {
+    "id": 3,
+    "title": "Дашборд аналитики",
+    "description": "Визуализация данных и отчеты в реальном времени",
+    "image": "/project3.jpg",
+    "type": "development",
+    "tags": ["TypeScript", "D3.js", "Next.js"],
+    "detailedDescription": "Создал интерактивную панель аналитики для крупного ритейлера. Реализовал десятки типов графиков, фильтры, экспорт отчетов и дашборды с drag-n-drop.\n\nИспользовал WebSocket для обновления данных в реальном времени. Оптимизировал рендеринг тысяч точек данных без потери производительности.\n\nКлиенты теперь могут отслеживать KPI в реальном времени, анализировать тренды и принимать решения на основе актуальных данных.",
+    "gallery": [
+      {"type": "image", "src": "/project3.jpg"},
+      {"type": "image", "src": "/project3_detail1.jpg"},
+      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+    ],
+    "link": "https://example.com/analytics"
+  },
+  {
+    "id": 4,
+    "title": "Брендинг стартапа",
+    "description": "Полный цикл разработки айдентики",
+    "image": "/project4.jpg",
+    "type": "design",
+    "tags": ["Branding", "Illustrator", "Photoshop"],
+    "detailedDescription": "Разработал полный брендинг для технологического стартапа. Создал логотип, фирменный стиль, паттерны, типографику и гайдлайны.\n\nПровел исследование конкурентов, подобрал цветовую палитру, отражающую ценности бренда. Результат — запоминающийся и масштабируемый бренд.\n\nБрендинг помог стартапу привлечь первых инвесторов и успешно выйти на рынок.",
+    "gallery": [
+      {"type": "image", "src": "/project4.jpg"},
+      {"type": "image", "src": "/project4_detail1.jpg"},
+      {"type": "image", "src": "/project4_detail2.jpg"}
+    ],
+    "link": "https://example.com/branding"
+  },
+  {
+    "id": 5,
+    "title": "CRM система",
+    "description": "Управление клиентами и задачами",
+    "image": "/project5.jpg",
+    "type": "development",
+    "tags": ["React", "Redux", "Tailwind"],
+    "detailedDescription": "Создал кастомную CRM для отдела продаж. Реализовал воронку продаж, управление лидами, задачи, напоминания и интеграцию с email.\n\nИнтерфейс интуитивно понятный, с быстрыми действиями и горячими клавишами. Команда продаж увеличила производительность на 60%.\n\nСистема легко расширяется и подстраивается под бизнес-процессы клиента.",
+    "gallery": [
+      {"type": "image", "src": "/project5.jpg"},
+      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+    ],
+    "link": "https://example.com/crm"
+  },
+  {
+    "id": 6,
+    "title": "Лендинг агентства",
+    "description": "Адаптивный и анимированный сайт",
+    "image": "/project6.jpg",
+    "type": "design",
+    "tags": ["Figma", "Web Design", "Prototype"],
+    "detailedDescription": "Разработал дизайн современного лендинга для digital-агентства. Использовал плавные анимации, параллакс эффекты и микровзаимодействия.\n\nСайт привлекает внимание с первых секунд, эффективно презентует портфолио и генерирует лиды. Конверсия выросла на 55%.\n\nКлиент получил уникальный дизайн, выделяющийся среди конкурентов.",
+    "gallery": [
+      {"type": "image", "src": "/project6.jpg"},
+      {"type": "image", "src": "/project6_detail1.jpg"}
+    ],
+    "link": "https://example.com/landing"
+  },
+  {
+    "id": 7,
+    "title": "Чат-приложение",
+    "description": "Реальное время, комнаты, уведомления",
+    "image": "/project7.jpg",
+    "type": "development",
+    "tags": ["Socket.io", "Express", "React"],
+    "detailedDescription": "Разработал полнофункциональный мессенджер с комнатами, личными сообщениями, уведомлениями и историей сообщений.\n\nИспользовал WebSocket для реального времени. Реализовал статусы \"печатает\", \"прочитано\", загрузку файлов и эмодзи.\n\nПриложение scales для тысяч пользователей и работает без задержек.",
+    "gallery": [
+      {"type": "image", "src": "/project7.jpg"},
+      {"type": "image", "src": "/project7_detail1.jpg"},
+      {"type": "image", "src": "/project7_detail2.jpg"}
+    ],
+    "link": "https://example.com/chat"
+  },
+  {
+    "id": 8,
+    "title": "Анимация для соцсетей",
+    "description": "Motion дизайн для бренда",
+    "image": "/project8.jpg",
+    "type": "design",
+    "tags": ["AfterEffects", "Premiere", "Motion"],
+    "detailedDescription": "Создал серию анимированных роликов для социальных сетей бренда. Разработал концепцию, сторителлинг и визуальный стиль.\n\nРолики набрали миллионы просмотров, повысили узнаваемость бренда и вовлеченность аудитории.\n\nКлиент получил готовый набор анимаций для всех соцсетей.",
+    "gallery": [
+      {"type": "image", "src": "/project8.jpg"},
+      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+    ],
+    "link": "https://example.com/motion"
+  },
+  {
+    "id": 9,
+    "title": "Анимация для соцсетей",
+    "description": "Motion дизайн для бренда",
+    "image": "/project8.jpg",
+    "type": "design",
+    "tags": ["AfterEffects", "Premiere", "Motion"],
+    "detailedDescription": "Создал серию анимированных роликов для социальных сетей бренда. Разработал концепцию, сторителлинг и визуальный стиль.\n\nРолики набрали миллионы просмотров, повысили узнаваемость бренда и вовлеченность аудитории.\n\nКлиент получил готовый набор анимаций для всех соцсетей.",
+    "gallery": [
+      {"type": "image", "src": "/project8.jpg"},
+      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+    ],
+    "link": ""
+  }
+]
