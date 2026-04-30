@@ -211,22 +211,22 @@ const App: React.FC = () => {
                   />
                 </div>
 
-                <nav className="hidden md:flex gap-1">
+                <nav className="hidden md:flex gap-1 razerBold text-base">
                   <button
                     onClick={() => setPhotoModalOpen(true)}
-                    className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white transition"
+                    className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
                   >
                     Обо мне
                   </button>
                   <button
                     onClick={() => scrollToProjects("design")}
-                    className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white transition"
+                    className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
                   >
                     Дизайн
                   </button>
                   <button
                     onClick={() => scrollToProjects("development")}
-                    className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white transition"
+                    className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
                   >
                     Разработка
                   </button>
@@ -264,7 +264,7 @@ const App: React.FC = () => {
 
                 <button
                   onClick={() => setHireModalOpen(true)}
-                  className="hidden md:block px-5 py-2 rounded-full bg-purple-400 text-gray-900 font-semibold text-sm hover:bg-purple-300 transition shadow-md shadow-purple-500/30"
+                  className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold"
                 >
                   Нанять меня
                 </button>
@@ -272,7 +272,7 @@ const App: React.FC = () => {
             </header>
 
             <div className="relative z-10 flex flex-col items-center justify-center min-h-75 md:min-h-100 px-6 text-center">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg whitespace-pre-line">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl razer text-white drop-shadow-lg whitespace-pre-line">
                 {titleLines.map((line, idx) => (
                   <React.Fragment key={idx}>
                     {line}
@@ -321,7 +321,7 @@ const App: React.FC = () => {
                 setHireModalOpen(true);
                 setMobileMenuOpen(false);
               }}
-              className="px-6 py-3 rounded-full bg-purple-400 text-gray-900 font-semibold text-base hover:bg-purple-300 transition shadow-md shadow-purple-500/30"
+              className="px-6 py-3 rounded-full bg-teal-500 text-gray-900 font-semibold text-base hover:bg-teal-300 transition shadow-md shadow-purple-500/30"
             >
               Нанять меня
             </button>

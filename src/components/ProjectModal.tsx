@@ -24,60 +24,27 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideDirection, setSlideDirection] = useState<"left" | "right">(
-    "right",
-  );
-  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
       } else if (e.key === "ArrowRight") {
-        nextSlide();
+        setCurrentSlide((prev) => (prev + 1) % (project?.gallery.length || 1));
       } else if (e.key === "ArrowLeft") {
-        prevSlide();
+        setCurrentSlide(
+          (prev) =>
+            (prev - 1 + (project?.gallery.length || 1)) %
+            (project?.gallery.length || 1),
+        );
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [project, currentSlide, isAnimating]);
+  }, [project, onClose]);
 
   if (!project) return null;
-
-  const nextSlide = () => {
-    if (isAnimating) return;
-    setSlideDirection("right");
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % project.gallery.length);
-      setTimeout(() => setIsAnimating(false), 50);
-    }, 300);
-  };
-
-  const prevSlide = () => {
-    if (isAnimating) return;
-    setSlideDirection("left");
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentSlide(
-        (prev) => (prev - 1 + project.gallery.length) % project.gallery.length,
-      );
-      setTimeout(() => setIsAnimating(false), 50);
-    }, 300);
-  };
-
-  const goToSlide = (index: number) => {
-    if (isAnimating || index === currentSlide) return;
-    const direction = index > currentSlide ? "right" : "left";
-    setSlideDirection(direction);
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentSlide(index);
-      setTimeout(() => setIsAnimating(false), 50);
-    }, 300);
-  };
 
   const currentItem = project.gallery[currentSlide];
 
@@ -93,18 +60,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
         <div className="max-w-7xl w-full bg-linear-to-br from-gray-900 to-black rounded-2xl border border-white/20 overflow-hidden">
           {/* Слайдер */}
-          <div className="relative bg-black/50 overflow-hidden">
-            <div
-              className="aspect-video flex items-center justify-center transition-all duration-300 ease-in-out"
-              style={{
-                transform: isAnimating
-                  ? slideDirection === "right"
-                    ? "translateX(-100%)"
-                    : "translateX(100%)"
-                  : "translateX(0)",
-                opacity: isAnimating ? 0 : 1,
-              }}
-            >
+          <div className="relative bg-black/50">
+            <div className="aspect-video flex items-center justify-center">
               {currentItem.type === "image" ? (
                 <img
                   src={currentItem.src}
@@ -126,13 +83,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             {project.gallery.length > 1 && (
               <>
                 <button
-                  onClick={prevSlide}
+                  onClick={() =>
+                    setCurrentSlide(
+                      (prev) =>
+                        (prev - 1 + project.gallery.length) %
+                        project.gallery.length,
+                    )
+                  }
                   className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl transition"
                 >
                   ‹
                 </button>
                 <button
-                  onClick={nextSlide}
+                  onClick={() =>
+                    setCurrentSlide(
+                      (prev) => (prev + 1) % project.gallery.length,
+                    )
+                  }
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl transition"
                 >
                   ›
@@ -141,7 +108,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   {project.gallery.map((_, idx) => (
                     <button
                       key={idx}
-                      onClick={() => goToSlide(idx)}
+                      onClick={() => setCurrentSlide(idx)}
                       className={`transition-all duration-300 rounded-full ${
                         idx === currentSlide
                           ? "bg-purple-500 w-4 h-2"

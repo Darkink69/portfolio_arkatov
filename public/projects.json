@@ -3,28 +3,27 @@
     "id": 1,
     "title": "E-commerce платформа",
     "description": "Современный интернет-магазин с корзиной и оплатой",
-    "image": "/img/gde_3d_hall.jpg",
+    "image": "/img/pizza.jpg",
     "type": "development",
-    "tags": ["React", "Node.js", "MongoDB"],
+    "tags": ["React", "TypeScript", "Figma"],
     "detailedDescription": "Разработал полноценную e-commerce платформу с нуля. Проект включал в себя создание адаптивного интерфейса, интеграцию платежных систем, админ-панель для управления товарами и заказами.\n\nОсобое внимание уделил производительности и безопасности. Внедрил JWT аутентификацию, защиту от CSRF атак, оптимизировал загрузку изображений и реализовал кэширование на уровне API.\n\nВ результате клиент получил современный, быстрый и надежный интернет-магазин, который выдерживает высокие нагрузки и удобен как для покупателей, так и для администраторов.",
     "gallery": [
-      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
-      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
-      {"type": "image", "src": "/img/gde_3d_hall.jpg"},
-      {"type": "video", "src": "https://vkvideo.ru/video_ext.php?oid=-198955776&id=456239394&hash=b1cf74e99c3e5095&hd=4"}
+      {"type": "image", "src": "/img/pizza_main.jpg"},
+      {"type": "image", "src": "/img/pizza_02.jpg"},
+      {"type": "image", "src": "/img/pizza_03.jpg"}
     ],
-    "link": "https://example.com/ecommerce"
+    "link": "https://pizzatownton.vercel.app/"
   },
   {
     "id": 2,
     "title": "Мобильное приложение фитнес",
     "description": "Приложение для отслеживания тренировок и питания",
-    "image": "/project2.jpg",
-    "type": "design",
-    "tags": ["UI/UX", "Mobile", "Figma"],
+    "image": "/img/geo_main.jpg",
+    "type": "development",
+    "tags": ["React", "TypeScript", "Python"],
     "detailedDescription": "Разработал дизайн-концепцию мобильного приложения для фитнес-трекинга. Провел исследование целевой аудитории, создал user flow и прототипы.\n\nИнтерфейс получился интуитивно понятным и мотивирующим. Использовал современные тренды в мобильном дизайне: неоморфизм, плавные анимации, удобную навигацию одним пальцем.\n\nПосле запуска дизайна конверсия в премиум-подписку выросла на 40%, а среднее время использования приложения увеличилось в 2 раза.",
     "gallery": [
-      {"type": "image", "src": "/project2.jpg"},
+      {"type": "image", "src": "/img/geo_main.jpg"},
       {"type": "image", "src": "/project2_detail1.jpg"},
       {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
     ],
