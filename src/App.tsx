@@ -846,19 +846,19 @@ const App: React.FC = () => {
             <nav className="hidden md:flex gap-1 razerBold text-lg">
               <button
                 onClick={() => setPhotoModalOpen(true)}
-                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
+                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition cursor-pointer"
               >
                 Обо мне
               </button>
               <button
                 onClick={() => scrollToProjects("design")}
-                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
+                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition cursor-pointer"
               >
                 Дизайн
               </button>
               <button
                 onClick={() => scrollToProjects("development")}
-                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition"
+                className="px-4 py-2 rounded-full text-gray-300 hover:text-white transition cursor-pointer"
               >
                 Разработка
               </button>
@@ -896,7 +896,7 @@ const App: React.FC = () => {
 
             <button
               onClick={() => setHireModalOpen(true)}
-              className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold"
+              className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold cursor-pointer"
             >
               Нанять меня
             </button>
@@ -1110,9 +1110,12 @@ const App: React.FC = () => {
         </section>
 
         <section className="px-6 py-12 border-t border-gray-800">
-          <h2 className="text-3xl font-bold text-white mb-10 text-left razerBold">
+          <h2 className="text-3xl font-bold text-white mb-2 text-left razerBold">
             Рабочий процесс
           </h2>
+          <p className="text-gray-400 mb-6 razer">
+            Как я вижу шаги создания проекта
+          </p>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">
             {workflowSteps.map((step, index) => (
               <React.Fragment key={step.name}>
@@ -1125,15 +1128,21 @@ const App: React.FC = () => {
                   </div>
                 </Tooltip>
                 {index < workflowSteps.length - 1 && (
-                  <div className="hidden md:block w-8 h-px bg-white/30"></div>
+                  <div className="hidden md:block w-20 h-0.5 bg-white/80"></div>
                 )}
               </React.Fragment>
             ))}
           </div>
         </section>
 
-        <footer className="px-6 py-8 border-t border-gray-800 text-center text-gray-500 text-sm razerBold">
+        <footer className="flex justify-between px-6 py-8 border-t border-gray-800 text-center text-gray-500 text-sm razerBold">
           © 2026 Портфолио. Владимир Аркатов.
+          <button
+            onClick={() => setHireModalOpen(true)}
+            className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold"
+          >
+            Нанять меня
+          </button>
         </footer>
       </div>
 

@@ -43,15 +43,24 @@ const PhotoModal: React.FC<PhotoModalProps> = ({ isOpen, onClose }) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <h3 className="text-xl font-bold text-white mb-2">
-            Алексей Дизайнеров
+          <h3 className="text-xl font-bold text-white mb-2 razerBold">
+            Владимир Аркатов
           </h3>
-          <p className="text-purple-400 mb-4">Старший продуктовый дизайнер</p>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            8+ лет опыта в создании цифровых продуктов. Работал с такими
-            брендами как Google, Microsoft и Spotify. Специализируюсь на UX/UI
-            дизайне, продуктовой стратегии и создании дизайн-систем.
+          <p className="text-purple-400 text-xl mb-4 razerBold">
+            Фронтенд разработчик, UI/UX, графический дизайнер
           </p>
+          <p className="text-gray-300 text-base leading-relaxed razer text-left">
+            10+ лет опыта в создании цифровых продуктов.<br></br>
+            Специализируюсь <br></br>• Электронный город<br></br>• DataEast
+          </p>
+          <a
+            href="https://github.com/Darkink69"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition text-center"
+          >
+            Мой GitHub
+          </a>
         </div>
       </div>
     </div>

@@ -16,18 +16,22 @@
   },
   {
     "id": 2,
-    "title": "Mini App, игра PizzaTower Tone",
-    "description": "Мини приложение для Телеграм. Казуальная игра с призами",
+    "title": "Сайт проекта «Кинолаборатория для школьников»",
+    "description": "Сайт",
     "image": "/img/geo_main.jpg",
     "type": "development",
-    "tags": ["React", "TypeScript", "Python", "Figma", "Illustrator"],
+    "tags": ["React", "TypeScript", "Python", "Flask", "Figma", "Illustrator"],
     "detailedDescription": "Разработал дизайн-концепцию мобильного приложения для фитнес-трекинга. Провел исследование целевой аудитории, создал user flow и прототипы.\n\nИнтерфейс получился интуитивно понятным и мотивирующим. Использовал современные тренды в мобильном дизайне: неоморфизм, плавные анимации, удобную навигацию одним пальцем.\n\nПосле запуска дизайна конверсия в премиум-подписку выросла на 40%, а среднее время использования приложения увеличилось в 2 раза.",
     "gallery": [
       {"type": "image", "src": "/img/geo_main.jpg"},
-      {"type": "image", "src": "/project2_detail1.jpg"},
-      {"type": "video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+      {"type": "image", "src": "/img/geo_main2.jpg"},
+      {"type": "image", "src": "/img/geo_main3.jpg"},
+      {"type": "image", "src": "/img/geo_main4.jpg"},
+      {"type": "image", "src": "/img/geo_main5.jpg"},
+      {"type": "image", "src": "/img/geo_main6.jpg"}
+
     ],
-    "link": "https://example.com/fitness-app"
+    "link": "https://geokinolab.ru/"
   },
   {
     "id": 3,
