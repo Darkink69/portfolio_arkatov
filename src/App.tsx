@@ -68,6 +68,8 @@ const App: React.FC = () => {
 
   const projectsRef = useRef<HTMLElement>(null);
   const intervalRef = useRef<number>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   useEffect(() => {
     fetch("/projects.json")
@@ -89,12 +91,36 @@ const App: React.FC = () => {
     };
   }, []);
 
+  // Обработчик клавиш стрелок
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isAnimating]);
+
   const nextSlide = () => {
     if (isAnimating) return;
     setSlideDirection("right");
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setTimeout(() => setIsAnimating(false), 50);
+    }, 300);
+  };
+
+  const prevSlide = () => {
+    if (isAnimating) return;
+    setSlideDirection("left");
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
       setTimeout(() => setIsAnimating(false), 50);
     }, 300);
   };
@@ -107,13 +133,32 @@ const App: React.FC = () => {
     setTimeout(() => {
       setCurrentSlide(index);
       setTimeout(() => setIsAnimating(false), 50);
-    }, 3000);
+    }, 300);
 
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = setInterval(() => {
         nextSlide();
       }, 6000);
+    }
+  };
+
+  // Обработчики свайпа
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
     }
   };
 
@@ -184,6 +229,23 @@ const App: React.FC = () => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M12.3804 15.915V17.8705C12.6983 18.0335 13.0743 18.1557 13.5084 18.2371C13.9424 18.3186 14.3999 18.3594 14.8808 18.3594C15.3495 18.3594 15.7948 18.3146 16.2166 18.2249C16.6384 18.1353 17.0083 17.9876 17.3262 17.7819C17.6441 17.5762 17.8958 17.3073 18.0812 16.9752C18.2666 16.6432 18.3594 16.2328 18.3594 15.7439C18.3594 15.3895 18.3064 15.0788 18.2004 14.812C18.0945 14.5452 17.9416 14.3079 17.7419 14.1001C17.5422 13.8923 17.3028 13.7059 17.0236 13.5409C16.7444 13.3759 16.4296 13.2201 16.0791 13.0734C15.8223 12.9675 15.592 12.8646 15.3882 12.7648C15.1845 12.665 15.0112 12.5632 14.8686 12.4593C14.7259 12.3554 14.6159 12.2454 14.5385 12.1293C14.4611 12.0132 14.4223 11.8818 14.4223 11.7351C14.4223 11.6007 14.457 11.4795 14.5263 11.3715C14.5955 11.2636 14.6934 11.1709 14.8197 11.0935C14.9461 11.0161 15.1009 10.956 15.2843 10.9132C15.4677 10.8704 15.6715 10.8491 15.8957 10.8491C16.0587 10.8491 16.2309 10.8613 16.4122 10.8857C16.5936 10.9102 16.776 10.9479 16.9594 10.9987C17.1428 11.0497 17.3211 11.1139 17.4943 11.1913C17.6675 11.2687 17.8275 11.3583 17.9742 11.4602V9.63297C17.6767 9.51891 17.3517 9.43437 16.9991 9.37937C16.6466 9.32437 16.2421 9.29688 15.7856 9.29688C15.321 9.29688 14.8808 9.3468 14.4651 9.4466C14.0494 9.54641 13.6836 9.70223 13.3677 9.91406C13.0519 10.1259 12.8023 10.3958 12.6189 10.7238C12.4355 11.0517 12.3438 11.4438 12.3438 11.9001C12.3438 12.4827 12.5119 12.9797 12.8481 13.3912C13.1843 13.8027 13.6948 14.151 14.3795 14.4362C14.6485 14.5462 14.8992 14.6541 15.1315 14.76C15.3638 14.866 15.5645 14.976 15.7336 15.09C15.9028 15.2041 16.0362 15.3284 16.1341 15.4628C16.2319 15.5972 16.2808 15.75 16.2808 15.9211C16.2808 16.0474 16.2502 16.1645 16.1891 16.2725C16.128 16.3805 16.0352 16.4741 15.9109 16.5536C15.7866 16.633 15.6318 16.6952 15.4463 16.74C15.2609 16.7848 15.0439 16.8072 14.7952 16.8072C14.3714 16.8072 13.9516 16.7329 13.5359 16.5841C13.1202 16.4355 12.735 16.2124 12.3804 15.915ZM9.09297 11.097H11.6016V9.49219H4.60938V11.097H7.1057V18.2422H9.09297V11.097Z"
+            fill="white"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Next.js",
+      icon: (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.0061 0C8.00487 0 6.14123 0.588785 4.57834 1.60249C4.30997 1.7757 4.04721 1.96324 3.79067 2.16573C-0.37558 5.45545 -1.2442 11.491 1.86726 15.8249C3.15369 17.6168 5.03102 18.9558 7.14248 19.5857C7.14621 19.5857 7.14933 19.5857 7.15306 19.5857C8.05717 19.8548 9.01483 20 10.0067 20C11.564 20 13.0385 19.6436 14.3523 19.0075C14.3486 19.005 14.3455 19.0025 14.3417 19.0006C14.4314 18.9545 14.5161 18.9078 14.592 18.8604C14.6201 18.843 14.6942 18.81 14.691 18.7751L11.508 14.4766L7.49055 8.54642L7.46128 8.61184L7.44385 14.2156C7.43824 14.3888 7.3903 14.5483 7.21471 14.6131C7.11259 14.6505 6.61633 14.6623 6.50425 14.6411C6.4096 14.6237 6.28382 14.4903 6.25144 14.4006C6.18295 11.7994 6.27448 9.18567 6.24646 6.57944C6.25954 6.44798 6.45319 6.31963 6.57959 6.3053C6.7228 6.2891 7.05966 6.29097 7.20412 6.30717C7.30001 6.31838 7.41458 6.35701 7.47 6.43988L15.3679 18.4012C15.6761 18.2031 15.975 17.9882 16.2577 17.7558C16.6574 17.4274 17.0292 17.0698 17.3722 16.6872C17.3847 16.6972 17.3971 16.7065 17.4096 16.7165C19.0186 14.9414 19.9993 12.5857 19.9993 10C19.9999 4.47726 15.5254 0 10.0061 0ZM13.592 13.3502L12.3598 11.4598C12.3492 10.1757 12.3617 8.88847 12.3785 7.60685C12.3834 7.22679 12.3336 6.7109 12.3772 6.35202C12.3922 6.22741 12.5304 6.06355 12.6543 6.0405C12.8237 6.00872 13.1649 6.00748 13.3324 6.04361C13.6904 6.1215 13.5839 6.61433 13.592 6.88536C13.6356 8.39502 13.6032 9.91277 13.592 11.4224C13.5871 12.0648 13.5976 12.7084 13.592 13.3508V13.3502Z"
             fill="white"
           />
         </svg>
@@ -898,11 +960,17 @@ const App: React.FC = () => {
               onClick={() => setHireModalOpen(true)}
               className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold cursor-pointer"
             >
-              Нанять меня
+              Контакты
             </button>
           </div>
         </header>
-        <div className="relative w-full overflow-hidden">
+
+        {/* Слайдер с обработчиками свайпа */}
+        <div
+          className="relative w-full overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className="w-full bg-cover bg-center bg-no-repeat transition-all duration-300 ease-in-out"
             style={{
@@ -935,9 +1003,24 @@ const App: React.FC = () => {
               )}
             </div>
 
-            {/* Отступ для точек */}
             <div className="h-16"></div>
           </div>
+
+          {/* Стрелки навигации */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white rounded-full w-10 h-10 flex items-center justify-center text-4xl transition z-20"
+            aria-label="Предыдущий слайд"
+          >
+            ‹
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white rounded-full w-10 h-10 flex items-center justify-center text-4xl transition z-20"
+            aria-label="Следующий слайд"
+          >
+            ›
+          </button>
 
           {/* Точки навигации */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
@@ -971,7 +1054,7 @@ const App: React.FC = () => {
               }}
               className="px-6 py-3 rounded-full bg-teal-500 text-gray-900 text-lg hover:bg-teal-300 transition shadow-md shadow-purple-500/30 razerBold"
             >
-              Нанять меня
+              Контакты
             </button>
             <button
               onClick={() => {
@@ -1025,7 +1108,7 @@ const App: React.FC = () => {
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="flex items-center gap-2 px-4 py-1 bg-gray-800/60 rounded-full border border-gray-700 hover:scale-105 transition-all"
+                    className="flex items-center gap-2 px-4 py-1 bg-gray-800/60 rounded-full border border-gray-700"
                   >
                     <span className="text-xl">{skill.icon}</span>
                     <span className="text-gray-200 text-sm">{skill.name}</span>
@@ -1114,7 +1197,7 @@ const App: React.FC = () => {
             Рабочий процесс
           </h2>
           <p className="text-gray-400 mb-6 razer">
-            Как я вижу шаги создания проекта
+            Как я вижу шаги создания цифрового проекта
           </p>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">
             {workflowSteps.map((step, index) => (
@@ -1135,13 +1218,30 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <footer className="flex justify-between px-6 py-8 border-t border-gray-800 text-center text-gray-500 text-sm razerBold">
+        <footer className="md:flex justify-between items-center px-6 py-8 border-t border-gray-800 text-center text-gray-500 text-sm razerBold">
           © 2026 Портфолио. Владимир Аркатов.
           <button
-            onClick={() => setHireModalOpen(true)}
-            className="hidden md:block px-5 py-2 rounded-full bg-teal-300 text-gray-900 font-semibold text-base hover:bg-teal-50 transition shadow-md shadow-purple-500/30 razerBold"
+            onClick={() => {
+              setPhotoModalOpen(true);
+              setMobileMenuOpen(false);
+            }}
+            className="md:block px-5 py-2  text-white font-semibold text-base razerBold cursor-pointer"
           >
-            Нанять меня
+            Обо мне
+          </button>
+          <a
+            href="https://github.com/Darkink69"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 text-white rounded-full transition text-center"
+          >
+            Мой GitHub
+          </a>
+          <button
+            onClick={() => setHireModalOpen(true)}
+            className="md:block px-5 py-2  text-white text-base razerBold cursor-pointer"
+          >
+            Контакты
           </button>
         </footer>
       </div>

@@ -52,7 +52,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     <div className="fixed inset-0 z-50 bg-black/95 overflow-y-auto">
       <div className="relative min-h-screen flex items-center justify-center p-4">
         <button
-          onClick={onClose}
+          onClick={() => {
+            onClose();
+            setCurrentSlide(0);
+          }}
           className="fixed top-4 right-4 z-10 text-white bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-2xl transition"
         >
           ✕
@@ -73,7 +76,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   src={currentItem.src}
                   title={project.title}
                   className="w-full h-full min-h-75 md:min-h-100"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -90,7 +92,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                         project.gallery.length,
                     )
                   }
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl transition"
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white rounded-full w-10 h-10 flex items-center justify-center text-4xl transition"
                 >
                   ‹
                 </button>
@@ -100,7 +102,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       (prev) => (prev + 1) % project.gallery.length,
                     )
                   }
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl transition"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white rounded-full w-10 h-10 flex items-center justify-center text-4xl transition"
                 >
                   ›
                 </button>
