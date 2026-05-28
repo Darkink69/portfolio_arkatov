@@ -1197,7 +1197,7 @@ const App: React.FC = () => {
             Рабочий процесс
           </h2>
           <p className="text-gray-400 mb-6 razer">
-            Как я вижу шаги создания цифрового проекта
+            Как я вижу шаги создания цифрового продукта
           </p>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">
             {workflowSteps.map((step, index) => (
